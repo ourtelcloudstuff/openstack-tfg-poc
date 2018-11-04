@@ -18,7 +18,7 @@ parameters:
     label: Instance Type
     description: Type of instance (flavor) to be used
     default: m1.little
-  security_group_ID:
+  security_group_id:
     type: string
     label: Security group
     description: Security group ID to be used for the instance
@@ -35,5 +35,6 @@ resources:
       key_name: { get_param: keypair }
       image: { get_param: image }
       flavor: { get_param: flavor }
-      security_groups: { get_param: security_group_ID }
+      security_groups: 
+        - { get_param: security_group_id }
       networks: [{network: {get_param: net} }]
