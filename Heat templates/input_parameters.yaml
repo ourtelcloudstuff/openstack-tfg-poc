@@ -35,5 +35,5 @@ resources:
       key_name: { get_param: keypair }
       image: { get_param: image }
       flavor: { get_param: flavor }
-      secgroup: { get_param: secgroup }
+      security_group: { get_param: secgroup }
       networks: [{network: {get_param: net} }]
