@@ -26,6 +26,9 @@ parameters:
   net:
     type: string
     description: The network for the VM
+    constraints:
+      - allowed_values: [ net_mgmt, net0]
+        description: Value must be one of net_mgmt or net0.
     default: net_mgmt
 
 resources:
