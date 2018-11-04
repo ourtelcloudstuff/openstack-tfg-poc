@@ -1,0 +1,55 @@
+heat_template_version: 2015-04-30
+
+description: Template PoC to deploy two compute instance depends on.
+
+parameters:
+  keypair:
+    type: string
+    label: Key Name
+    description: Name of key-pair to be used for compute instance
+    default: prueba-keypair
+  image:
+    type: string
+    label: Image ID
+    description: Image to be used for compute instance 
+    default: prueba-cirros
+  flavor:
+    type: string
+    label: Instance Type
+    description: Type of instance (flavor) to be used
+    default: m1.little
+  security_group_id:
+    type: string
+    label: Security group
+    description: Security group ID to be used for the instance
+    default: prueba-secgroup
+  net:
+    type: string
+    description: The network for the VM
+    constraints:
+      - allowed_values: [ net_mgmt, net0]
+        description: Value must be one of net_mgmt or net0.
+    default: net_mgmt
+
+resources:
+  server1:
+    type: OS::Nova::Server
+    depends_on: server2
+    properties:
+      key_name: { get_param: keypair }
+      image: { get_param: image }
+      flavor: { get_param: flavor }
+      security_groups: 
+        - { get_param: security_group_id }
+      networks: [{network: {get_param: net} }]
+
+resources:
+  server2:
+    type: OS::Nova::Server
+  properties:
+    key_name: { get_param: keypair }
+    image: { get_param: image }
+    flavor: { get_param: flavor }
+    security_groups: 
+      - { get_param: security_group_id }
+    networks: [{network: {get_param: net} }]
