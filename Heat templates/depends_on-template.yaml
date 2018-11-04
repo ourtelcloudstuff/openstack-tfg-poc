@@ -47,7 +47,6 @@ resources:
   server2:
     type: OS::Nova::Server
   properties:
-    key_name: { get_param: keypair }
     image: { get_param: image }
     flavor: { get_param: flavor }
     security_groups: 
