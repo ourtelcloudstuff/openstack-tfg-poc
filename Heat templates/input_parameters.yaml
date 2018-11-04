@@ -18,6 +18,11 @@ parameters:
     label: Instance Type
     description: Type of instance (flavor) to be used
     default: m1.little
+  secgroup:
+    type: string
+    label: Security group
+    description: Security group to be used for the instance
+    default: prueba-secgroup
   net:
     type: string
     description: The network for the VM
@@ -30,4 +35,5 @@ resources:
       key_name: { get_param: keypair }
       image: { get_param: image }
       flavor: { get_param: flavor }
+      secgroup: { get_param: secgroup }
       networks: [{network: {get_param: net} }]
