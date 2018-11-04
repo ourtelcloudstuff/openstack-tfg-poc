@@ -29,11 +29,11 @@ parameters:
     default: net_mgmt
 
 resources:
-  intace_create_by_heat:
+  instance_create_by_heat:
     type: OS::Nova::Server
     properties:
       key_name: { get_param: keypair }
       image: { get_param: image }
       flavor: { get_param: flavor }
-      security_group: { get_param: security_group }
+      security_groups: { get_param: security_group }
       networks: [{network: {get_param: net} }]
