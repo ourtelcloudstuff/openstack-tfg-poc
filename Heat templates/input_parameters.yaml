@@ -46,3 +46,6 @@ outputs:
   instance_ip:
     description: The IP address of the deployed instance
     value: { get_attr: [heat_instance, first_address] }
+  instance_private_ip:
+    description: Private IP address of the deployed compute instance
+    value: { get_attr: [my_instance, networks, private, 0] }
