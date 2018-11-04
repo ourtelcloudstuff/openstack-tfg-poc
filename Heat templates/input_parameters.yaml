@@ -22,7 +22,7 @@ parameters:
     type: string
     label: Security group
     description: Security group to be used for the instance
-    default: prueba-secgroup
+    default: 09012383-4bbb-4c3d-a6a9-a47440523b19
   net:
     type: string
     description: The network for the VM
