@@ -11,6 +11,7 @@ parameters:
   stack_name:
     type: string
     description: Name of the stack with VM status of which is needed to check.
+    default: simple-autoscaling 
 
   output_name:
     type: string
