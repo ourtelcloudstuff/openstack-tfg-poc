@@ -81,25 +81,25 @@ outputs:
       This URL is the webhook to scale up the group.  You can invoke
       the scale-up operation by doing an HTTP POST to this URL; no
       body nor extra headers are needed.
-      value: {get_attr: [scale_up_policy, alarm_url]}
+    value: {get_attr: [scale_up_policy, alarm_url]}
   scale_dn_url:
     description: >
       This URL is the webhook to scale down the group.  You can invoke
       the scale-down operation by doing an HTTP POST to this URL; no
       body nor extra headers are needed.
-      value: {get_attr: [scale_down_policy, alarm_url]}
+    value: {get_attr: [scale_down_policy, alarm_url]}
   asg_size:
     description: >
       This is the current size of the auto scaling group.
-      value: {get_attr: [asg, current_size]}
+    value: {get_attr: [asg, current_size]}
   server_list:
     description: >
       This is a list of server names that are part of the group.
-      value: {get_attr: [asg, outputs_list, name]}
+    value: {get_attr: [asg, outputs_list, name]}
   networks:
     description: >
       This is a map of server resources and their networks.
-      value: {get_attr: [asg, outputs, networks]}
+    value: {get_attr: [asg, outputs, networks]}
   server_ips:
     description: >
       This is a list of first ip addresses of the servers in the group
