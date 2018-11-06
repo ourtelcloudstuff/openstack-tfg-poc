@@ -94,6 +94,10 @@ resources:
             template: trust+url
             params:
               url: {get_attr: [scale_up_policy, signal_url]}
+      query:
+        list_join:
+          - ''
+          - - {'=': {server_group: {get_param: "OS::stack_id"}}}
 
   cpu_alarm_low:
     type: OS::Aodh::GnocchiAggregationByResourcesAlarm
@@ -111,6 +115,10 @@ resources:
             template: trust+url
             params:
               url: {get_attr: [scale_up_policy, signal_url]}
+      query:
+        list_join:
+          - ''
+          - - {'=': {server_group: {get_param: "OS::stack_id"}}}
 
 outputs:
   scale_up_url:
