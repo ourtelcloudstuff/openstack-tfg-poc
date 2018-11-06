@@ -104,4 +104,4 @@ outputs:
     description: >
       This is a list of first ip addresses of the servers in the group
       for a specified network.
-      value: {get_attr: [asg, outputs_list, networks, {get_param: network}, 0]}
+    value: {get_attr: [asg, outputs_list, networks, {get_param: network}, 0]}
