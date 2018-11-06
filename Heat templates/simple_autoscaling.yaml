@@ -42,7 +42,7 @@ parameters:
   network:
     type: string
     description: The network for the VM
-    default: net-mgmt
+    default: net_mgmt
 
 resources:
   asg:
