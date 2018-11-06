@@ -11,7 +11,6 @@ parameters:
   stack_name:
     type: string
     description: Name of the stack with VM status of which is needed to check.
-    default: simple-autoscaling 
 
   output_name:
     type: string
@@ -67,4 +66,4 @@ resources:
            - wait_stack_complete: <% $.wait_stack_complete.stack_status=CREATE_IN_PROGRESS %>
            - get_vm_id: <% $.wait_stack_complete.stack_status=CREATE_COMPLETE %>
       input:
-stack_name: {get_param: stack_name}
+        stack_name: {get_param: stack_name}
