@@ -42,7 +42,6 @@ resources:
   scale_in_policy:
     type: OS::Senlin::Policy
     properties:
-      type: senlin.policy.scaling-1.0
       bindings:
         - cluster: {get_resource: cluster}
       properties:
@@ -54,7 +53,6 @@ resources:
   scale_out_policy:
     type: OS::Senlin::Policy
     properties:
-      type: senlin.policy.scaling-1.0
       bindings:
         - cluster: {get_resource: cluster}
       properties:
