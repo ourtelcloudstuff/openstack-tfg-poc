@@ -1,0 +1,12 @@
+heat_template_version: 2014-10-16  
+description: A simple auto scaling group.  
+resources:  
+  group:
+    type: OS::Heat::AutoScalingGroup
+    properties:
+      cooldown: 60
+      desired_capacity: 2
+      max_size: 5
+      min_size: 1
+      resource:
+        type: OS::Nova::Server::Cirros

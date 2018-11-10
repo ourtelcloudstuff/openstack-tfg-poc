@@ -11,9 +11,13 @@ resources:
       flavor: m1.little
       networks:
         - network: net_mgmt
+      user_data_format: RAW
+      user_data: |
+        #!/bin/sh
+        while [ 1 ] ; do echo $((13**99)) 1>/dev/null 2>&1; done &
 
   volume:
     type: OS::Cinder::Volume
     properties:
       image: 'prueba-cirros'
-      size: 1
+      size: 2
