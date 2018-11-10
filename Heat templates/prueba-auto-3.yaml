@@ -43,11 +43,11 @@ parameters:
     type: string
     description: The network for the VM
     default: net_mgmt
-   volume:
-     type: OS::Cinder::Volume
-     properties:
-     image: 'prueba-cirros'
-     size: 2
+  volume:
+    type: OS::Cinder::Volume
+    properties:
+    image: 'prueba-cirros'
+    size: 2
 
 resources:
   asg:
