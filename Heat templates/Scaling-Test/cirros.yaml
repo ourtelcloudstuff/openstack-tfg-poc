@@ -15,5 +15,5 @@ resources:
   volume:
     type: OS::Cinder::Volume
     properties:
-      image: 'Cirros 0.4'
+      image: 'prueba-cirros'
       size: 1
