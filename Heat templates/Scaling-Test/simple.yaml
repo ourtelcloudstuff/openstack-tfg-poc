@@ -10,7 +10,8 @@ resources:
       min_size: 1
       resource:
         type: OS::Nova::Server::Cirros
-      metadata: {"metering.server_group": {get_param: "OS::stack_id"}}
+        properties:
+          metadata: {"metering.server_group": {get_param: "OS::stack_id"}}
 
   scaleup_policy:
     type: OS::Heat::ScalingPolicy
