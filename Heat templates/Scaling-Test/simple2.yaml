@@ -31,6 +31,5 @@ resources:
       threshold: 50
       alarm_actions:
         - {get_attr: [scaleup_policy, alarm_url]}
-      matching_metadata: {'metadata.user_metadata.stack': {get_param: "OS::stack_id"}}
       comparison_operator: gt
       resource_type: instance
