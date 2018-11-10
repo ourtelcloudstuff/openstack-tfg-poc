@@ -33,11 +33,3 @@ resources:
       matching_metadata: {'metadata.user_metadata.stack': {get_param: "OS::stack_id"}}
       comparison_operator: gt
           
-outputs:
-  gnocchi_query:
-    value:
-      str_replace:
-        template: >
-          gnocchi measures aggregation --resource-type instance
-          --query 'server_group="stackval"'
-          --granularity 300 --aggregation mean -m cpu_util
