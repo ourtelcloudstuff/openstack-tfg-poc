@@ -7,7 +7,7 @@ parameters:
   key_name:
     type: string
     description: Name of an existing key pair to use for the instances
-    default: prueba-key
+    default: prueba-keypair
     constraints:
       - custom_constraint: nova.keypair
         description: Must name a public key (pair) known to Nova
