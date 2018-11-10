@@ -64,7 +64,7 @@ resources:
     properties:
       adjustment_type: change_in_capacity
       auto_scaling_group_id: {get_resource: asg}
-      cooldown: 2
+      cooldown: 60
       scaling_adjustment: 1
 
   scale_down_policy:
@@ -72,7 +72,7 @@ resources:
     properties:
       adjustment_type: change_in_capacity
       auto_scaling_group_id: {get_resource: asg}
-      cooldown: 2
+      cooldown: 60
       scaling_adjustment: '-1'
 
 outputs:
@@ -105,3 +105,5 @@ outputs:
       This is a list of first ip addresses of the servers in the group
       for a specified network.
     value: {get_attr: [asg, outputs_list, networks, {get_param: network}, 0]}
+  only_server_ips:
+    value: {get_attr: outputs_list}
