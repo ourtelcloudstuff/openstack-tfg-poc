@@ -23,8 +23,9 @@ resources:
     type: OS::Aodh::GnocchiAggregationByResourcesAlarm
     properties:
       description: Scale-up if the average CPU > 50% for 1 minute
-      meter_name: cpu_util
-      statistic: avg
+      metric: cpu_util
+      aggregation_method: mean
+      granularity: 60
       period: 60
       evaluation_periods: 1
       threshold: 50
@@ -32,4 +33,4 @@ resources:
         - {get_attr: [scaleup_policy, alarm_url]}
       matching_metadata: {'metadata.user_metadata.stack': {get_param: "OS::stack_id"}}
       comparison_operator: gt
-          
+      resource_type: instance
