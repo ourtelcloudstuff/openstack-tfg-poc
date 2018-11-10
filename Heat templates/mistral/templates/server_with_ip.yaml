@@ -36,4 +36,4 @@ outputs:
   ip:
     value: {get_attr: [floating_ip, ip]}
   server_id:
-value: {get_resource: server}
+    value: {get_resource: server}
