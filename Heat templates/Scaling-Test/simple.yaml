@@ -23,7 +23,7 @@ resources:
     type: OS::Aodh::GnocchiAggregationByResourcesAlarm
     properties:
       description: Scale up if CPU > 50%
-      meteric: cpu_util
+      metric: cpu_util
       aggregation_method: mean
       granularity: 300
       period: 60
