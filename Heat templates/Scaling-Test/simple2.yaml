@@ -29,7 +29,7 @@ resources:
       evaluation_periods: 1
       threshold: 50
       alarm_actions:
-        - {get_attr: [scale_up_policy, alarm_url]}
+        - {get_attr: [scaleup_policy, alarm_url]}
       matching_metadata: {'metadata.user_metadata.stack': {get_param: "OS::stack_id"}}
       comparison_operator: gt
           
