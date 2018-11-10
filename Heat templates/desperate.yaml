@@ -129,7 +129,7 @@ resources:
           on_success:
             - run_ssh
         - name: run_ssh
-          action: std.ssh cmd="kill -9 $(ps aux | grep 'cat /dev/urandom' | awk '{print $1}')" host=<% $.vm_ip %> username=<% $.user %> password=<% $.password %>
+          action: std.ssh cmd="kill -9 $(ps aux | grep 'cat /dev/urandom' | awk '{print $1}')" host=<% $.vm_ip %> username=<% $.user %> password=<%$.password %>
       input: {'user': {get_param: user}, 'password': {get_param: password}, 'stack_id': {get_param: "OS::stack_id"}}
 
   trigger_load_cpu:
