@@ -26,7 +26,6 @@ resources:
       meteric: cpu_util
       aggregation_method: mean
       granularity: 300
-      statistic: avg
       period: 60
       evaluation_periods: 1
       threshold: 50
