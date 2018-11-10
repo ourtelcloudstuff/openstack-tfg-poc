@@ -67,4 +67,4 @@ resources:
            - wait_stack_complete: <% $.wait_stack_complete.stack_status=CREATE_IN_PROGRESS %>
            - get_vm_id: <% $.wait_stack_complete.stack_status=CREATE_COMPLETE %>
       input:
-stack_name: {get_param: stack_name}
+        stack_name: {get_param: stack_name}
