@@ -22,20 +22,16 @@ resources:
   cpu_alarm_high:
     type: OS::Aodh::GnocchiAggregationByResourcesAlarm
     properties:
-      description: Scale up if CPU > 50%
-      metric: cpu_util
-      aggregation_method: mean
-      granularity: 60
+      description: Scale-up if the average CPU > 50% for 1 minute
+      meter_name: cpu_util
+      statistic: avg
+      period: 60
       evaluation_periods: 1
       threshold: 50
       alarm_actions:
-        - {get_attr: [scaleup_policy, alarm_url]}
-      resource_type: instance
+        - {get_attr: [scale_up_policy, alarm_url]}
+      matching_metadata: {'metadata.user_metadata.stack': {get_param: "OS::stack_id"}}
       comparison_operator: gt
-      query:
-        list_join:
-          - ''
-          - - {'=': {server_group: {get_param: "OS::stack_id"}}}
           
 outputs:
   gnocchi_query:
