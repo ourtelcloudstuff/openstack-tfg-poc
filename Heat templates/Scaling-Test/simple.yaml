@@ -25,8 +25,7 @@ resources:
       description: Scale up if CPU > 50%
       metric: cpu_util
       aggregation_method: mean
-      granularity: 300
-      period: 60
+      granularity: 60
       evaluation_periods: 1
       threshold: 50
       alarm_actions:
