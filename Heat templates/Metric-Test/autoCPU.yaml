@@ -21,7 +21,7 @@ parameters:
   image:
     type: string
     description: Name or ID of the image to use for the instances.
-    default: cirros-0.4.0-x86_64-disk 
+    default: prueba-cirros
     constraints:
       - custom_constraint: glance.image
         description: Must identify an image known to Glance
