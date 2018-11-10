@@ -104,7 +104,7 @@ resources:
               url: {get_attr: [scale_up_policy, signal_url]}
       query:
         list_join:
-          - ''
+          - '-'
           - - {'=': {server_group: {get_param: "OS::stack_id"}}}
 
   cpu_alarm_low:
@@ -125,7 +125,7 @@ resources:
               url: {get_attr: [scale_up_policy, signal_url]}
       query:
         list_join:
-          - ''
+          - '-'
           - - {'=': {server_group: {get_param: "OS::stack_id"}}}
 
 outputs:
