@@ -49,18 +49,17 @@ resources:
     type: OS::Heat::AutoScalingGroup
     properties:
       resource:
-        server:
-          type: OS::Nova::Server
-          properties:
-            key_name: { get_param: key_name }
-            image: { get_param: image }
-            flavor: { get_param: flavor }
-            networks: [{network: {get_param: network} }]
-            metadata: {"metering.server_group": {get_param: "OS::stack_id"}}
-            user_data_format: RAW
-            user_data: |
-              #!/bin/sh
-              while [ 1 ] ; do echo $((13**99)) 1>/dev/null 2>&1; done &            
+        type: OS::Nova::Server
+        properties:
+          key_name: { get_param: key_name }
+          image: { get_param: image }
+          flavor: { get_param: flavor }
+          networks: [{network: {get_param: network} }]
+          metadata: {"metering.server_group": {get_param: "OS::stack_id"}}
+          user_data_format: RAW
+          user_data: |
+            #!/bin/sh
+            while [ 1 ] ; do echo $((13**99)) 1>/dev/null 2>&1; done &            
       cooldown: 60
       min_size: 1
       desired_capacity: 2
