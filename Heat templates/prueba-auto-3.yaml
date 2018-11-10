@@ -65,11 +65,13 @@ resources:
             user_data: |
               #!/bin/sh
               while [ 1 ] ; do echo $((13**99)) 1>/dev/null 2>&1; done &
+              
         volume:
           type: OS::Cinder::Volume
           properties:
             image: 'prueba-cirros'
             size: 2
+            
       cooldown: 60
       min_size: 1
       desired_capacity: 2
