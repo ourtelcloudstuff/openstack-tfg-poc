@@ -54,7 +54,7 @@ resources:
           image: { get_param: image }
           flavor: { get_param: flavor }
           security_groups: 
-            - { get_param: security_group_id }
+            - { get_param: security_group_name }
           metadata: {"metering.stack": {get_param: "OS::stack_id"}}
       min_size: 1
       max_size: 2
