@@ -1,0 +1,47 @@
+heat_template_version: 2015-04-30
+description: A simple auto scaling group.  
+resources:  
+  group:
+    type: OS::Heat::AutoScalingGroup
+    properties:
+      cooldown: 60
+      desired_capacity: 2
+      max_size: 7
+      min_size: 1
+      resource:
+        type: OS::Nova::Server::Cirros
+
+  scaleup_policy:
+    type: OS::Heat::ScalingPolicy
+    properties:
+      adjustment_type: change_in_capacity
+      auto_scaling_group_id: { get_resource: group }
+      cooldown: 60
+      scaling_adjustment: 1
+
+  cpu_alarm_high:
+    type: OS::Aodh::GnocchiAggregationByResourcesAlarm
+    properties:
+      description: Scale up if CPU > 50%
+      metric: cpu_util
+      aggregation_method: mean
+      granularity: 60
+      evaluation_periods: 1
+      threshold: 50
+      alarm_actions:
+        - {get_attr: [scaleup_policy, alarm_url]}
+      resource_type: instance
+      comparison_operator: gt
+      query:
+        list_join:
+          - ''
+          - - {'=': {server_group: {get_param: "OS::stack_id"}}}
+          
+outputs:
+  gnocchi_query:
+    value:
+      str_replace:
+        template: >
+          gnocchi measures aggregation --resource-type instance
+          --query 'server_group="stackval"'
+          --granularity 300 --aggregation mean -m cpu_util
