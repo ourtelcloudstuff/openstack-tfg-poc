@@ -1,9 +1,10 @@
-heat_template_version: 2014-10-16  
+heat_template_version: 2015-04-30
 description: A simple server.  
 resources:  
   server:
     type: OS::Nova::Server
     properties:
+      metadata: {"metering.server_group": {get_param: "OS::stack_id"}}
       block_device_mapping:
         - device_name: vda
           delete_on_termination: true
