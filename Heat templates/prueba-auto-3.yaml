@@ -46,7 +46,7 @@ parameters:
   volume:
     type: OS::Cinder::Volume
     properties:
-    image: 'prueba-cirros'
+    image: prueba-cirros
     size: 2
 
 resources:
