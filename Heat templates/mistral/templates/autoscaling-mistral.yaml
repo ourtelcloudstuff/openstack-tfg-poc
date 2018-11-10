@@ -156,4 +156,4 @@ outputs:
 
   next_release:
     value: {get_attr: [trigger_release_cpu, next_execution_time]}
-description: Time of the next execution of trigger_release_cpu
+    description: Time of the next execution of trigger_release_cpu
