@@ -105,5 +105,13 @@ outputs:
       This is a list of first ip addresses of the servers in the group
       for a specified network.
     value: {get_attr: [asg, outputs_list, networks, {get_param: network}, 0]}
-  only_server_ips:
+  o1:
     value: {get_attr: [asg, outputs_list, networks, {get_param: network}, 0]}
+  o2:
+    value: {get_attr: [outputs_list, networks, {get_param: network}, 0]}
+  o3:
+    value: {get_attr: [asg, networks, {get_param: network}, 0]}
+  o4:
+    value: {get_attr: [asg, {get_param: network}, 0]}
+  o5:
+    value: {get_attr: [asg, outputs_list]}
