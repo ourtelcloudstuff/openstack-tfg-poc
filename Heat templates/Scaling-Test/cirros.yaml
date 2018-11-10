@@ -1,0 +1,19 @@
+heat_template_version: 2014-10-16  
+description: A simple server.  
+resources:  
+  server:
+    type: OS::Nova::Server
+    properties:
+      block_device_mapping:
+        - device_name: vda
+          delete_on_termination: true
+          volume_id: { get_resource: volume } 
+      flavor: m1.little
+      networks:
+        - network: net_mgmt
+
+  volume:
+    type: OS::Cinder::Volume
+    properties:
+      image: 'Cirros 0.4'
+      size: 1
