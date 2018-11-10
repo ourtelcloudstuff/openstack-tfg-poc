@@ -43,11 +43,6 @@ parameters:
     type: string
     description: The network for the VM
     default: net_mgmt
-  volume:
-    type: OS::Cinder::Volume
-    properties:
-    image: prueba-cirros
-    size: 2
 
 resources:
   asg:
@@ -62,10 +57,6 @@ resources:
             flavor: { get_param: flavor }
             networks: [{network: {get_param: network} }]
             metadata: {"metering.server_group": {get_param: "OS::stack_id"}}
-            block_device_mapping:
-              - device_name: vda
-                delete_on_termination: true
-                volume_id: { get_resource: volume } 
             user_data_format: RAW
             user_data: |
               #!/bin/sh
