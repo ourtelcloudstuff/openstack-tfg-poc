@@ -108,7 +108,9 @@ outputs:
   ips:
     value: {get_attr: [asg, outputs_list, networks, {get_param: network}, 1]}
   ips1:
-    value: {get_attr: [asg, outputs_list, networks, {get_param: network}]}    
+    value: {get_attr: [asg, outputs_list, networks, {get_param: network}]}  
+  ips2:
+    value: {get_attr: [asg, networks, {get_param: network}, 0]}  
 
 
     
