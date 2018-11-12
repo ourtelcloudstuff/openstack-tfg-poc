@@ -57,7 +57,7 @@ resources:
             networks: [{network: {get_param: network} }]
       min_size: 1
       desired_capacity: 3
-      max_size: 10
+      max_size: 5
 
   scale_up_policy:
     type: OS::Heat::ScalingPolicy
