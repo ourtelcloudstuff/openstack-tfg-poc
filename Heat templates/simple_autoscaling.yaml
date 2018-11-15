@@ -1,15 +1,9 @@
 heat_template_version: 2015-04-30
 
 description: >
-  This is a very simple template that illustrates the basic features
+  This is a template that illustrates the basic features
   of OS::Heat::AutoScalingGroup when the scaled resource is an
-  OS::Nova::Server.  By virtue of its simplicity this example should
-  be usable in many contexts.  In particular, this example does not
-  require Neutron nor a load balancer nor any particular support for
-  software in the VMs.  In fact, the VMs in this example do not
-  actually do anything.  This example does no automatic scaling, but
-  does discuss manual scaling.
-  For a more complete example, see autoscaling.yaml.
+  OS::Nova::Server. 
 parameters:
   key_name:
     type: string
@@ -29,12 +23,6 @@ parameters:
     type: string
     description: >
       Name or ID of the image to use for the instances.
-      You can get the default from
-      http://cloud.fedoraproject.org/fedora-20.x86_64.qcow2
-      There is also
-      http://cloud.fedoraproject.org/fedora-20.i386.qcow2
-      Any image should work since this template
-      does not ask the VMs to do anything.
     default: prueba-cirros
     constraints:
       - custom_constraint: glance.image
